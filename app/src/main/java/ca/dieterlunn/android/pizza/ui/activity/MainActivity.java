@@ -10,6 +10,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 
+import butterknife.InjectView;
 import ca.dieterlunn.android.pizza.R;
 import ca.dieterlunn.android.pizza.callbacks.NavigationDrawerCallbacks;
 import ca.dieterlunn.android.pizza.fragments.NavigationDrawerFragment;
@@ -21,7 +22,7 @@ public class MainActivity extends BaseActivity implements GoogleApiClient.Connec
 
     private static final int RC_SIGN_IN = 0;
 
-    private Toolbar mToolbar;
+    @InjectView(R.id.toolbar) public Toolbar toolbar;
     private GoogleApiClient mClient;
 
     private NavigationDrawerFragment navigationDrawerFragment;
@@ -34,8 +35,7 @@ public class MainActivity extends BaseActivity implements GoogleApiClient.Connec
 
         setContentView(R.layout.activity_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mClient = new GoogleApiClient.Builder(this)
@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity implements GoogleApiClient.Connec
                 .build();
 
         navigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.drawer_fragment);
-        navigationDrawerFragment.setup(R.id.drawer_fragment, (DrawerLayout)findViewById(R.id.drawer), mToolbar);
+        navigationDrawerFragment.setup(R.id.drawer_fragment, (DrawerLayout)findViewById(R.id.drawer), toolbar);
     }
 
     @Override
