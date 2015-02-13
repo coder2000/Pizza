@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Pizza Delivery</string>
+    <string name="menu_search">Search</string>
+    <string name="drawer_open">Menu open</string>
+    <string name="drawer_closed">Menu closed</string>
+</resources>

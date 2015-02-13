@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="navigation_text_margin">72dp</dimen>
+    <dimen name="drawer_width">240dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+</resources>
