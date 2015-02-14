@@ -1,8 +1,8 @@
-package ca.dieterlunn.android.pizza.di;
+package ca.dieterlunn.android.pizza.app;
 
 import android.app.Application;
 
-import ca.dieterlunn.android.pizza.di.modules.RootModule;
+import ca.dieterlunn.android.pizza.app.modules.RootModule;
 import dagger.ObjectGraph;
 
 /**

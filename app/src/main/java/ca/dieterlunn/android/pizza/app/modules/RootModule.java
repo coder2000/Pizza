@@ -1,4 +1,4 @@
-package ca.dieterlunn.android.pizza.di.modules;
+package ca.dieterlunn.android.pizza.app.modules;
 
 import android.content.Context;
 
@@ -6,7 +6,7 @@ import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
 
-import ca.dieterlunn.android.pizza.di.PizzaApplication;
+import ca.dieterlunn.android.pizza.app.PizzaApplication;
 import ca.dieterlunn.android.pizza.ui.activity.MainActivity;
 import dagger.Module;
 import dagger.Provides;

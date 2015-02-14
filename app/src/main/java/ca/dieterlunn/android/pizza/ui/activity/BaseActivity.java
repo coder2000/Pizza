@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
 import butterknife.ButterKnife;
-import ca.dieterlunn.android.pizza.di.PizzaApplication;
+import ca.dieterlunn.android.pizza.app.PizzaApplication;
 
 /**
  * Created by Dieter on 2/12/2015.
