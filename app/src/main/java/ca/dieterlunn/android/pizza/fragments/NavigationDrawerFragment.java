@@ -24,9 +24,6 @@ import ca.dieterlunn.android.pizza.R;
 import ca.dieterlunn.android.pizza.adapters.NavigationDrawerAdapter;
 import ca.dieterlunn.android.pizza.callbacks.NavigationDrawerCallbacks;
 
-/**
- * Created by Dieter on 12/22/2014.
- */
 public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
@@ -53,7 +50,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mDrawer.setHasFixedSize(true);
 
         final List<NavigationItem> navigationItems = getMenu();
-        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems);
+        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems, "Dieter Lunn", "dieter@dieterlunn.ca", R.drawable.avatar);
         adapter.setNavigationDrawerCallbacks(this);
         mDrawer.setAdapter(adapter);
 

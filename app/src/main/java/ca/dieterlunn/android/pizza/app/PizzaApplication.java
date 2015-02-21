@@ -5,9 +5,6 @@ import android.app.Application;
 import ca.dieterlunn.android.pizza.app.modules.RootModule;
 import dagger.ObjectGraph;
 
-/**
- * Created by Dieter on 2/12/2015.
- */
 public class PizzaApplication extends Application {
     private ObjectGraph objectGraph;
 

@@ -10,9 +10,6 @@ import ca.dieterlunn.android.pizza.R;
 import ca.dieterlunn.android.pizza.callbacks.NavigationDrawerCallbacks;
 import ca.dieterlunn.android.pizza.fragments.NavigationDrawerFragment;
 
-/**
- * Created by Dieter on 12/21/2014.
- */
 public class MainActivity extends BaseActivity implements NavigationDrawerCallbacks {
 
     @InjectView(R.id.toolbar) public Toolbar toolbar;

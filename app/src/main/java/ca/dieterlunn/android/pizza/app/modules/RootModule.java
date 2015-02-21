@@ -11,10 +11,6 @@ import ca.dieterlunn.android.pizza.ui.activity.MainActivity;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by Dieter on 2/12/2015.
- */
-
 @Module(
         injects = {
                 PizzaApplication.class,

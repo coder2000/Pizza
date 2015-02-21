@@ -2,9 +2,6 @@ package ca.dieterlunn.android.pizza;
 
 import android.graphics.drawable.Drawable;
 
-/**
- * Created by Dieter on 12/22/2014.
- */
 public class NavigationItem {
     private String mText;
     private Drawable mIcon;
