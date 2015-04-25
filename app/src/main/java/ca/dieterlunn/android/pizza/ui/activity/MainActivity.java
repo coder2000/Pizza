@@ -1,20 +1,30 @@
 package ca.dieterlunn.android.pizza.ui.activity;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 
-import butterknife.InjectView;
+import com.heinrichreimersoftware.materialdrawer.DrawerFrameLayout;
+import com.heinrichreimersoftware.materialdrawer.structure.DrawerItem;
+import com.heinrichreimersoftware.materialdrawer.structure.DrawerProfile;
+import com.squareup.picasso.Picasso;
+
+import javax.inject.Inject;
+
+import ca.dieterlunn.android.pizza.AccountUtils;
 import ca.dieterlunn.android.pizza.R;
-import ca.dieterlunn.android.pizza.callbacks.NavigationDrawerCallbacks;
-import ca.dieterlunn.android.pizza.fragments.NavigationDrawerFragment;
 
-public class MainActivity extends BaseActivity implements NavigationDrawerCallbacks {
+public class MainActivity extends BaseActivity {
 
-    @InjectView(R.id.toolbar) public Toolbar toolbar;
-
-    private NavigationDrawerFragment navigationDrawerFragment;
+    @Inject public AccountUtils.UserProfile _profile;
+    @Inject public Context _context;
+    public RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -22,11 +32,44 @@ public class MainActivity extends BaseActivity implements NavigationDrawerCallba
 
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        DrawerFrameLayout drawer = (DrawerFrameLayout) findViewById(R.id.drawer);
+        recyclerView = (RecyclerView) findViewById(R.id.orderList);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawer,
+                toolbar,
+                R.string.drawer_open,
+                R.string.drawer_closed
+        ){
+            public void onDrawerOpened(View view) {
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerClosed(View view) {
+                invalidateOptionsMenu();
+            }
+        };
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        navigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.drawer_fragment);
-        navigationDrawerFragment.setup(R.id.drawer_fragment, (DrawerLayout)findViewById(R.id.drawer), toolbar);
+        drawer.setDrawerListener(drawerToggle);
+
+        Drawable avatar = null;
+
+        Picasso.with(_context).load(_profile.get_possiblePhoto()).placeholder(avatar);
+
+        drawer.setProfile(new DrawerProfile()
+                .setBackground(getResources().getDrawable(R.drawable.cardboard_texture))
+                .setAvatar(avatar)
+                .setName(_profile.get_possibleNames().get(0))
+                .setDescription(_profile.get_primaryEmail()));
+
+        drawer.addItem(new DrawerItem().setTextPrimary(getString(R.string.orders)));
     }
 
     @Override
@@ -38,19 +81,5 @@ public class MainActivity extends BaseActivity implements NavigationDrawerCallba
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (navigationDrawerFragment.isDrawerOpen()) {
-            navigationDrawerFragment.closeDrawer();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-
     }
 }

@@ -1,12 +1,12 @@
 package ca.dieterlunn.android.pizza.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import ca.dieterlunn.android.pizza.app.PizzaApplication;
 
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

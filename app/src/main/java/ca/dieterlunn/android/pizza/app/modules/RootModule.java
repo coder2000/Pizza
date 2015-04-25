@@ -2,8 +2,6 @@ package ca.dieterlunn.android.pizza.app.modules;
 
 import android.content.Context;
 
-import com.squareup.otto.Bus;
-
 import javax.inject.Singleton;
 
 import ca.dieterlunn.android.pizza.app.PizzaApplication;
@@ -16,7 +14,8 @@ import dagger.Provides;
                 PizzaApplication.class,
                 MainActivity.class
         },
-        library = true
+        library = true,
+        complete = false
 )
 
 public class RootModule {
@@ -30,11 +29,5 @@ public class RootModule {
     @Singleton
     public Context provideApplicationContext() {
         return _context;
-    }
-
-    @Provides
-    @Singleton
-    public Bus provideBus() {
-        return new Bus();
     }
 }

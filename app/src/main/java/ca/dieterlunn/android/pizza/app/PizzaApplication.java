@@ -3,6 +3,7 @@ package ca.dieterlunn.android.pizza.app;
 import android.app.Application;
 
 import ca.dieterlunn.android.pizza.app.modules.RootModule;
+import ca.dieterlunn.android.pizza.app.modules.UserProfileModule;
 import dagger.ObjectGraph;
 
 public class PizzaApplication extends Application {
@@ -15,7 +16,7 @@ public class PizzaApplication extends Application {
     }
 
     private void injectDependencies() {
-        objectGraph = ObjectGraph.create(new RootModule(this));
+        objectGraph = ObjectGraph.create(new RootModule(this), new UserProfileModule());
         objectGraph.inject(this);
     }
 
